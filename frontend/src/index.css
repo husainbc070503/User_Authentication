@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.Container.myContainer {
+  padding: 20px 0;
+}
+
+.register-form,
+.login-form {
+  width: 650px;
+  max-width: 95%;
+  margin: 20px auto;
+  box-shadow: 0 10px 20px #bababa4b;
+  padding: 20px;
+  border-radius: 20px;
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.login-form {
+  height: auto;
+}
+
+.FormLabel.label {
+  font-size: 18px;
+}
+
+.Button.auth {
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+.profile-image,
+img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px #bababa4b;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
