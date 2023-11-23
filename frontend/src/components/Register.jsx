@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { toast } from "react-toastify";
@@ -176,7 +176,7 @@ const Register = () => {
           theme: "colored",
         });
 
-        navigate('login')
+        navigate("login");
         setDetails(initialState);
       } else {
         toast.error(data.message, {
@@ -215,6 +215,11 @@ const Register = () => {
     />
   );
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user-details"));
+    if (user) navigate("user");
+  }, []);
+
   return (
     <Box>
       <div className="register-card">
@@ -230,10 +235,10 @@ const Register = () => {
         </Typography>
         <div className="register-form auth">
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Name</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <FormControl fullWidth>
                 <TextField
                   type="name"
@@ -247,10 +252,10 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Email</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <FormControl fullWidth>
                 <TextField
                   type="email"
@@ -264,10 +269,10 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Password</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <OutlinedInput
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -293,12 +298,12 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">
                 Confirm Password
               </FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <OutlinedInput
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -324,10 +329,10 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Phone</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <FormControl fullWidth>
                 <TextField
                   type="tel"
@@ -341,10 +346,10 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Address</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <FormControl fullWidth>
                 <TextField
                   type="text"
@@ -360,10 +365,10 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Profile</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <FormControl fullWidth>
                 <TextField
                   type="file"
@@ -376,10 +381,10 @@ const Register = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Skills</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
@@ -395,15 +400,24 @@ const Register = () => {
             </Grid>
           </Grid>
         </div>
-        <Button
-          color="primary"
-          variant="contained"
-          className="Button auth"
-          disabled={loading}
-          onClick={handleSubmit}
-        >
-          Register
-        </Button>
+        <div className="buttons">
+          <Button
+            color="primary"
+            variant="contained"
+            className="Button auth"
+            disabled={loading}
+            onClick={handleSubmit}
+          >
+            Register
+          </Button>
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={() => navigate("../login")}
+          >
+            Already Registered?
+          </Button>
+        </div>
       </div>
     </Box>
   );

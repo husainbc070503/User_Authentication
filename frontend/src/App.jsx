@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Container,
@@ -16,6 +16,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserCard from "./components/UserCard";
 
 function App() {
+
   const theme = createTheme({
     palette: {
       primary: orange,

@@ -45,3 +45,29 @@ img {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.Button.logout {
+  position: absolute;
+  top: 20%;
+  right: 20px;
+}
+
+.buttons{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 890px) {
+  .Button.logout {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+  }
+  .buttons{
+    width: 80%;
+    margin: 0 auto;
+  }
+}

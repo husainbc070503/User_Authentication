@@ -1,16 +1,34 @@
-import { Grid, Typography } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Details from "./Details";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UserCard = () => {
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user-details")));
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("user-details");
+    navigate("../login");
+    toast.info("Logged Out!!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   return (
-    <>
+    <Container maxWidth="md">
       <Typography
         color="secondary"
         fontSize={40}
@@ -21,6 +39,14 @@ const UserCard = () => {
       >
         Welcome, {user?.user?.name}
       </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        className="Button logout"
+        onClick={handleLogout}
+      >
+        Logout
+      </Button>
       <Grid
         container
         spacing={3}
@@ -40,7 +66,7 @@ const UserCard = () => {
           <Details title="Skills" value={user?.user?.skills.toString()} />
         </Grid>
       </Grid>
-    </>
+    </Container>
   );
 };
 

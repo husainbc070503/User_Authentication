@@ -101,10 +101,10 @@ const Login = () => {
         </Typography>
         <div className="login-form auth">
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Email</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <FormControl fullWidth>
                 <TextField
                   type="email"
@@ -118,10 +118,10 @@ const Login = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2} alignItems="center" mb={4}>
-            <Grid item md={2}>
+            <Grid item md={2} xs={12}>
               <FormLabel className="FormLabel label">Password</FormLabel>
             </Grid>
-            <Grid item md={10}>
+            <Grid item md={10} xs={12}>
               <OutlinedInput
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -147,15 +147,24 @@ const Login = () => {
             </Grid>
           </Grid>
         </div>
-        <Button
-          color="secondary"
-          variant="contained"
-          className="Button auth"
-          disabled={loading}
-          onClick={handleSubmit}
-        >
-          Login
-        </Button>
+        <div className="buttons">
+          <Button
+            color="secondary"
+            variant="contained"
+            className="Button auth"
+            disabled={loading}
+            onClick={handleSubmit}
+          >
+            Login
+          </Button>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => navigate("/")}
+          >
+            Register Yourself?
+          </Button>
+        </div>
       </div>
     </Box>
   );
